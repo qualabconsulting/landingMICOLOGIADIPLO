@@ -340,6 +340,7 @@
             top: 2px;
         }
         .important-dates-box strong { color: var(--danger); }
+        .important-dates-box a { color: var(--secondary); font-weight: 700; text-decoration: none; }
 
         .price-tag {
             text-align: center;
@@ -424,6 +425,41 @@
         }
         .paypal-btn:hover { background: #005ea6; }
 
+        .whatsapp-btn {
+            display: block;
+            background: #25D366;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        .whatsapp-btn:hover { background: #128C7E; }
+
+        /* WHATSAPP FLOATING BUTTON */
+        .float-wa {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .float-wa:hover { transform: scale(1.1); color: white; }
+
         footer {
             background: #0a1a14;
             color: rgba(255,255,255,0.6);
@@ -450,7 +486,6 @@
 
             <a href="#payment" class="btn btn-primary">Asegura tu lugar hoy</a>
             <br>
-            <!-- IMAGEN DEL POSTER AÑADIDA AQUÍ -->
             <img src="https://z-cdn-media.chatglm.cn/files/a37fae81-48ef-4a21-8b9e-b78db4a3b841.png?auth_key=1882404240-0a66d0649c6b42c881416e7340dbed3d-0-dbf48c06f047689bdb41f9ec28cbfb14" alt="Diplomado en Micología Aplicada a la Salud" class="hero-poster">
         </div>
     </header>
@@ -686,7 +721,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"El temario es sumamente completo y los casos clínicos del último módulo te preparan para la vida real. Aprendí a hacer sinergias entre Reishi y Turkey Tail para pacientes oncológicos. Una inversión que vale cada centavo."</p>
+                    <p class="testimonial-text">"El temario es sumamente completo y los casos clínicos del último módulo te preparan para la vida real. Aprendía a hacer sinergias entre Reishi y Turkey Tail para pacientes oncológicos. Una inversión que vale cada centavo."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">AG</div>
                         <div class="author-info">
@@ -715,6 +750,7 @@
                         <li><strong>1. Pago de Inscripción:</strong> $120 MXN (Debes realizarlo ahora para separar tu lugar).</li>
                         <li><strong>2. Primer Pago Mensual:</strong> $1,100 MXN (A más tardar el 15 de Julio).</li>
                         <li><strong>3. Inicio de Clases:</strong> 16 de Julio (Jueves 7:30 PM, Hora CDMX).</li>
+                        <li><strong>4. Confirmación:</strong> Envía tu comprobante de pago al WhatsApp: <a href="https://wa.me/524921344124?text=Hola%2C%20adjunto%20mi%20comprobante%20de%20pago%20para%20el%20Diplomado%20de%20Micolog%C3%ADa" target="_blank">492 134 4124</a>.</li>
                     </ul>
                 </div>
 
@@ -730,6 +766,7 @@
                         <h3>💳 Pago Seguro con PayPal</h3>
                         <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Paga tu inscripción de $120 MXN o el curso completo con tarjeta de crédito/débito o saldo de PayPal de forma 100% segura.</p>
                         <a href="https://www.paypal.com/ncp/payment/X8CST85Y9TQZN" target="_blank" class="paypal-btn">Pagar ahora con PayPal</a>
+                        <a href="https://wa.me/524921344124?text=Hola%2C%20pagu%C3%A9%20mi%20inscripci%C3%B3n%20de%20%24120%20por%20PayPal%2C%20adjunto%20el%20comprobante" target="_blank" class="whatsapp-btn">📱 Enviar comprobante por WhatsApp</a>
                     </div>
 
                     <!-- TRANSFERENCIA -->
@@ -752,11 +789,13 @@
                             <small>Banco / Titular</small>
                             <p>BBVA - Jose Guerrero Garfias</p>
                         </div>
+
+                        <a href="https://wa.me/524921344124?text=Hola%2C%20realic%C3%A9%20mi%20dep%C3%B3sito%20bancario%2C%20adjunto%20el%20comprobante" target="_blank" class="whatsapp-btn">📱 Enviar comprobante por WhatsApp</a>
                     </div>
                 </div>
                 
                 <p style="margin-top: 2rem; font-size: 0.85rem; color: #888; text-align: center; border-top: 1px solid #eee; padding-top: 1.5rem;">
-                    *Una vez realizado el pago de los $120 MXN de inscripción, envía el comprobante por WhatsApp o correo para confirmar tu registro. El primer pago mensual se cubre el 15 de julio.
+                    *Recuerda: Tu lugar estará asegurado hasta el 15 de julio, fecha límite para enviar tu comprobante de pago y cubrir el primer pago mensual antes del inicio de clases.
                 </p>
             </div>
         </div>
@@ -767,6 +806,9 @@
             <p>© 2024 Diplomado en Micología Aplicada a la Salud.<br>Impartido por José Guerrero, QFB y Naturópata.</p>
         </div>
     </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/524921344124?text=Hola%2C%20tengo%20una%20duda%20sobre%20el%20Diplomado%20de%20Micolog%C3%ADa" class="float-wa" target="_blank">💬</a>
 
     <script>
         // COUNTDOWN TIMER - Actualizado al 1 de Julio de 2026 a las 11:59 PM
