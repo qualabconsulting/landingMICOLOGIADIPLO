@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diplomado en Micología Aplicada a la Salud | Inscripciones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #142a22; /* Verde bosque oscuro */
+            --secondary: #2c5545; /* Verde medio */
+            --accent: #d4a017; /* Dorado/Ámbar */
+            --bg-light: #f7f5f0; /* Crema suave */
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --text-muted: #555;
+            --danger: #b91c1c;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* UTILIDADES */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .text-center { text-align: center; }
+        .section-padding { padding: 6rem 0; }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* BOTONES */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(212, 160, 23, 0.4);
+        }
+        .btn-primary:hover {
+            background: var(--primary);
+            color: var(--text-light);
+            transform: translateY(-3px);
+        }
+
+        /* HERO */
+        header {
+            background: linear-gradient(rgba(20, 42, 34, 0.92), rgba(20, 42, 34, 0.85)), url('https://images.unsplash.com/photo-1574978818602-8c4c8c9b4d4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            color: var(--text-light);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-light);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        header p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem auto; opacity: 0.9; font-weight: 300; }
+
+        .hero-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .info-badge {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .hero-poster {
+            max-width: 400px;
+            width: 100%;
+            margin-top: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            border: 5px solid rgba(255,255,255,0.15);
+        }
+
+        /* COUNTDOWN */
+        .countdown-wrapper {
+            background: var(--primary);
+            padding: 3rem 2rem;
+            border-top: 4px solid var(--accent);
+            border-bottom: 4px solid var(--accent);
+        }
+        .countdown-wrapper h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .countdown div {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 100px;
+            border: 1px solid rgba(212, 160, 23, 0.3);
+        }
+        .countdown span {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .countdown label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* BENEFICIOS */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+        .benefit-card:hover { transform: translateY(-10px); }
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .benefit-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .benefit-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* SYLLABUS */
+        #syllabus { background: white; }
+        .module {
+            margin-bottom: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .module-header {
+            background: var(--bg-light);
+            padding: 1.5rem 2rem;
+            border-left: 6px solid var(--accent);
+        }
+        .module-header h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        .module-content {
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .class-item {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .class-item h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 0.5rem;
+        }
+        .class-item ul { list-style: none; }
+        .class-item ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #444;
+            font-size: 0.9rem;
+        }
+        .class-item ul li::before {
+            content: "🍄";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* TESTIMONIOS */
+        #testimonials { background: var(--primary); color: white; }
+        #testimonials .section-title { color: white; }
+        #testimonials .section-subtitle { color: rgba(255,255,255,0.7); }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: "“";
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(212, 160, 23, 0.2);
+            position: absolute;
+            top: -20px;
+            left: 10px;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .author-info h4 { margin: 0; font-size: 1rem; color: var(--accent); }
+        .author-info p { margin: 0; font-size: 0.8rem; opacity: 0.7; }
+
+        /* PAYMENT */
+        .payment-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .important-dates-box {
+            background: #fff8e1;
+            border: 2px dashed var(--accent);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .important-dates-box h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+        .important-dates-box ul { list-style: none; padding: 0; }
+        .important-dates-box li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            padding-left: 2rem;
+            position: relative;
+        }
+        .important-dates-box li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        .important-dates-box strong { color: var(--danger); }
+
+        .price-tag {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+        }
+        .price-tag .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 1.3rem;
+            display: block;
+        }
+        .price-tag .new-price {
+            font-size: 3.5rem;
+            color: var(--primary);
+            font-weight: 800;
+            line-height: 1;
+            margin: 0.5rem 0;
+        }
+        .price-tag .payment-plan {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .payment-methods { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
+            .countdown div { min-width: 70px; padding: 1rem; }
+            .countdown span { font-size: 2rem; }
+        }
+
+        .pay-card {
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .pay-card:hover { border-color: var(--accent); }
+        .pay-card h3 { margin-bottom: 1.5rem; color: var(--primary); font-family: 'Playfair Display', serif; }
+
+        .bank-detail-box {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .bank-detail-box p { margin: 0; font-family: 'Courier New', monospace; font-weight: 700; color: var(--primary); font-size: 1rem; word-break: break-all; }
+        .bank-detail-box small { color: var(--text-muted); display: block; margin-bottom: 0.2rem; }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            float: right;
+            transition: all 0.3s;
+        }
+        .copy-btn:hover { background: var(--secondary); color: white; }
+
+        .paypal-btn {
+            display: block;
+            background: #0070ba;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            transition: background 0.3s;
+        }
+        .paypal-btn:hover { background: #005ea6; }
+
+        footer {
+            background: #0a1a14;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header>
+        <div class="container">
+            <div style="font-size: 5rem; margin-bottom: 1rem; line-height: 1;">🍄</div>
+            <h1>Diplomado en Micología<br>Aplicada a la Salud</h1>
+            <p>Especialízate en el uso terapéutico de los hongos medicinales. Aprende a diseñar protocolos clínicos basados en evidencia científica para mejorar la calidad de vida de tus pacientes.</p>
+            
+            <div class="hero-info">
+                <div class="info-badge">📅 3 meses (12 semanas)</div>
+                <div class="info-badge">🕢 Jueves 7:30 PM (CDMX)</div>
+                <div class="info-badge">💻 En vivo por Zoom</div>
+                <div class="info-badge">🚀 Inicio: 16 de Julio</div>
+            </div>
+
+            <a href="#payment" class="btn btn-primary">Asegura tu lugar hoy</a>
+            <br>
+            <!-- IMAGEN DEL POSTER AÑADIDA AQUÍ -->
+            <img src="https://z-cdn-media.chatglm.cn/files/a37fae81-48ef-4a21-8b9e-b78db4a3b841.png?auth_key=1882404240-0a66d0649c6b42c881416e7340dbed3d-0-dbf48c06f047689bdb41f9ec28cbfb14" alt="Diplomado en Micología Aplicada a la Salud" class="hero-poster">
+        </div>
+    </header>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown-wrapper text-center">
+        <div class="container">
+            <h3>⚠️ La inscripción con precio especial cierra en:</h3>
+            <div class="countdown" id="countdown">
+                <div><span id="days">00</span> <label>Días</label></div>
+                <div><span id="hours">00</span> <label>Horas</label></div>
+                <div><span id="minutes">00</span> <label>Min</label></div>
+                <div><span id="seconds">00</span> <label>Seg</label></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENEFICIOS -->
+    <section class="section-padding container">
+        <div class="text-center">
+            <h2 class="section-title">¿Por qué estudiar este diplomado?</h2>
+            <p class="section-subtitle">El renacimiento de la medicina natural requiere profesionales altamente capacitados. Este diplomado te ofrece:</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <span class="benefit-icon">🔬</span>
+                <h3>Base Científica</h3>
+                <p>Comprende la farmacología de los hongos (β-glucanos, triterpenos) y su mecanismo de acción inmunomodulador a nivel celular.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">📋</span>
+                <h3>Protocolos Clínicos</h3>
+                <p>Aprende a diseñar protocolos integrativos seguros, calculando dosis y sinergias para distintas patologías.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🧠</span>
+                <h3>Enfoque en Salud Integral</h3>
+                <p>Aplica la micoterapia para el sistema nervioso, inmunológico y cardiovascular, abordando estrés, ansiedad y fatiga crónica.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🛡️</span>
+                <h3>Control de Calidad</h3>
+                <p>Diferencia entre extractos acuosos, alcohólicos y duales. Aprende a elegir y recomendar suplementos de máxima biodisponibilidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SYLLABUS -->
+    <section id="syllabus" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Plan de Estudios Completo</h2>
+                <p class="section-subtitle">12 clases estructuradas para llevarte de la teoría básica a la aplicación clínica avanzada.</p>
+            </div>
+
+            <!-- MODULO 1 -->
+            <div class="module">
+                <div class="module-header">
+                    <h3>MÓDULO I. FUNDAMENTOS DE MICOLOGÍA MEDICINAL</h3>
+                </div>
+                <div class="module-content">
+                    <div class="class-item">
+                        <h4>Clase 1. Introducción a los Hongos Medicinales</h4>
+                        <ul>
+                            <li>Historia de la micoterapia</li>
+                            <li>Hongos medicinales en la medicina tradicional</li>
+                            <li>Situación actual y evidencia científica</li>
+                            <li>Aplicaciones en salud integrativa</li>
+                            <li>Principales especies de interés terapéutico</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 2. Biología y Fisiología de los Hongos</h4>
+                        <ul>
+                            <li>Reino Fungi</li>
+                            <li>Anatomía y estructura de los hongos</li>
+                            <li>Micelio y cuerpo fructífero</li>
+                            <li>Ciclo de vida</li>
+                            <li>Producción de metabolitos bioactivos</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 3. Farmacología de los Hongos Medicinales</h4>
+                        <ul>
+                            <li>β-glucanos y polisacáridos</li>
+                            <li>Terpenos y triterpenos</li>
+                            <li>Esteroles y antioxidantes</li>
+                            <li>Mecanismos de acción</li>
+                            <li>Inmunomodulación</li>
+                            <li>Biodisponibilidad</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 4. Calidad, Extracción y Control de Productos</h4>
+                        <ul>
+                            <li>Tipos de extractos</li>
+                            <li>Extractos acuosos</li>
+                            <li>Extractos alcohólicos</li>
+                            <li>Extractos duales</li>
+                            <li>Estandarización</li>
+                            <li>Cómo elegir suplementos de calidad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULO 2 -->
+            <div class="module">
+                <div class="module-header">
+                    <h3>MÓDULO II. HONGOS MEDICINALES Y SUS APLICACIONES</h3>
+                </div>
+                <div class="module-content">
+                    <div class="class-item">
+                        <h4>Clase 5. Reishi (Ganoderma lucidum)</h4>
+                        <ul>
+                            <li>Composición química</li>
+                            <li>Sistema inmunológico</li>
+                            <li>Estrés y sueño</li>
+                            <li>Salud cardiovascular</li>
+                            <li>Evidencia científica</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 6. Cordyceps spp.</h4>
+                        <ul>
+                            <li>Cordicepina y adenosina</li>
+                            <li>Energía celular</li>
+                            <li>Mitocondrias y ATP</li>
+                            <li>Salud respiratoria</li>
+                            <li>Rendimiento físico</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 7. Melena de León (Hericium erinaceus)</h4>
+                        <ul>
+                            <li>Hericenonas y erinacinas</li>
+                            <li>Neuroplasticidad</li>
+                            <li>Memoria y concentración</li>
+                            <li>Sistema nervioso</li>
+                            <li>Salud digestiva</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 8. Hongos Medicinales Emergentes</h4>
+                        <ul>
+                            <li>Shiitake</li>
+                            <li>Maitake</li>
+                            <li>Turkey Tail</li>
+                            <li>Chaga</li>
+                            <li>Tremella</li>
+                            <li>Agaricus blazei</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULO 3 -->
+            <div class="module">
+                <div class="module-header">
+                    <h3>MÓDULO III. APLICACIÓN PROFESIONAL DE LA MICOTERAPIA</h3>
+                </div>
+                <div class="module-content">
+                    <div class="class-item">
+                        <h4>Clase 9. Micoterapia para el Sistema Inmunológico</h4>
+                        <ul>
+                            <li>Respuesta inmune innata y adaptativa</li>
+                            <li>Infecciones recurrentes</li>
+                            <li>Inflamación crónica</li>
+                            <li>Protocolos de apoyo</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 10. Micoterapia para el Sistema Nervioso</h4>
+                        <ul>
+                            <li>Estrés</li>
+                            <li>Ansiedad</li>
+                            <li>Fatiga mental</li>
+                            <li>Neuroprotección</li>
+                            <li>Casos prácticos</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 11. Diseño de Protocolos Integrativos</h4>
+                        <ul>
+                            <li>Selección de hongos según objetivos</li>
+                            <li>Sinergias entre especies</li>
+                            <li>Dosificación</li>
+                            <li>Seguimiento y evaluación</li>
+                            <li>Consideraciones de seguridad</li>
+                        </ul>
+                    </div>
+                    <div class="class-item">
+                        <h4>Clase 12. Casos Clínicos y Proyecto Final</h4>
+                        <ul>
+                            <li>Análisis de casos reales</li>
+                            <li>Desarrollo de protocolos</li>
+                            <li>Presentación de proyectos</li>
+                            <li>Evaluación final</li>
+                            <li>Conclusiones del diplomado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonials" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Lo que dicen nuestros estudiantes</h2>
+                <p class="section-subtitle">Profesionales de la salud que han transformado su práctica clínica con la micoterapia.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"El diplomado superó mis expectativas. La forma en que el QFB José Guerrero explica la farmacología de los hongos hace que sea fácil de entender y aplicar en consulta. Mis pacientes con fatiga crónica han mejorado drásticamente con Cordyceps."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Dra. Mariana Ruiz</h4>
+                            <p>Médica General</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Como naturópata, siempre buscaba bases científicas sólidas. Este curso me dio la confianza para recetar Melena de León en casos de ansiedad y declive cognitivo. El módulo de extracción y calidad es oro puro."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JL</div>
+                        <div class="author-info">
+                            <h4>Javier López</h4>
+                            <p>Naturópata Certificado</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"El temario es sumamente completo y los casos clínicos del último módulo te preparan para la vida real. Aprendí a hacer sinergias entre Reishi y Turkey Tail para pacientes oncológicos. Una inversión que vale cada centavo."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AG</div>
+                        <div class="author-info">
+                            <h4>Ana García</h4>
+                            <p>Nutricionista Integral</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAYMENT -->
+    <section id="payment" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Inscríbete Hoy</h2>
+                <p class="section-subtitle">Aprovecha el precio especial exclusivo para asistentes del webinar. ¡Cupos limitados!</p>
+            </div>
+
+            <div class="payment-wrapper">
+                <!-- FECHAS CLAVE Y ÉNFASIS EN INSCRIPCIÓN -->
+                <div class="important-dates-box">
+                    <h3>📅 Fechas Clave y Método de Pago</h3>
+                    <ul>
+                        <li><strong>1. Pago de Inscripción:</strong> $120 MXN (Debes realizarlo ahora para separar tu lugar).</li>
+                        <li><strong>2. Primer Pago Mensual:</strong> $1,100 MXN (A más tardar el 15 de Julio).</li>
+                        <li><strong>3. Inicio de Clases:</strong> 16 de Julio (Jueves 7:30 PM, Hora CDMX).</li>
+                    </ul>
+                </div>
+
+                <div class="price-tag">
+                    <span class="old-price">Precio regular: $7,600 MXN</span>
+                    <div class="new-price">$3,000 MXN</div>
+                    <span class="payment-plan">o 3 pagos mensuales de $1,100 MXN</span>
+                </div>
+
+                <div class="payment-methods">
+                    <!-- PAYPAL -->
+                    <div class="pay-card">
+                        <h3>💳 Pago Seguro con PayPal</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Paga tu inscripción de $120 MXN o el curso completo con tarjeta de crédito/débito o saldo de PayPal de forma 100% segura.</p>
+                        <a href="https://www.paypal.com/ncp/payment/X8CST85Y9TQZN" target="_blank" class="paypal-btn">Pagar ahora con PayPal</a>
+                    </div>
+
+                    <!-- TRANSFERENCIA -->
+                    <div class="pay-card">
+                        <h3>🏦 Transferencia / Depósito</h3>
+                        
+                        <div class="bank-detail-box">
+                            <small>Tarjeta (Débito/Crédito)</small>
+                            <p>4152 3145 9813 3463</p>
+                            <button class="copy-btn" onclick="copyText('4152314598133463')">Copiar</button>
+                        </div>
+
+                        <div class="bank-detail-box">
+                            <small>CLABE Interbancaria</small>
+                            <p>012 074 01558665643 7</p>
+                            <button class="copy-btn" onclick="copyText('012074015586656437')">Copiar</button>
+                        </div>
+
+                        <div class="bank-detail-box" style="margin-bottom: 0;">
+                            <small>Banco / Titular</small>
+                            <p>BBVA - Jose Guerrero Garfias</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 2rem; font-size: 0.85rem; color: #888; text-align: center; border-top: 1px solid #eee; padding-top: 1.5rem;">
+                    *Una vez realizado el pago de los $120 MXN de inscripción, envía el comprobante por WhatsApp o correo para confirmar tu registro. El primer pago mensual se cubre el 15 de julio.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Diplomado en Micología Aplicada a la Salud.<br>Impartido por José Guerrero, QFB y Naturópata.</p>
+        </div>
+    </footer>
+
+    <script>
+        // COUNTDOWN TIMER - Actualizado al 1 de Julio de 2026 a las 11:59 PM
+        const countdownDate = new Date("Jul 1, 2026 23:59:59").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "<p style='color:#d4a017; font-size:1.5rem;'>La oferta ha terminado. Contáctanos para disponibilidad.</p>";
+            }
+        }, 1000);
+
+        // COPY TO CLIPBOARD
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert("¡Copiado al portapapeles!: " + text);
+            }, function(err) {
+                console.error('Error al copiar: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
